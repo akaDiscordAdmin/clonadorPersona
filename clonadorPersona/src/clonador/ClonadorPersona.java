@@ -23,20 +23,16 @@ public class ClonadorPersona {
 	/**
 	 * 
 	 * @return 
+	 * @throws Exception 
 	 */
-	public List<Persona> generarClones(String nombre) {
+	public List<Persona> generarClones(String nombre) throws Exception {
 		List<Persona> personas = new LinkedList<Persona>();
 		
 		for(int i=0; i<10; i++) {
+			try {
 			Persona p = FactoryPersona.getPersona(nombre);
-			
-			boolean personaValida = ValidadorPersona.isValid(p);
-			
-			if(personaValida) {
-				personas.add(0, p);
-			}
-			
 			personas.add(0, p);
+			} catch(Exception e) {}
 		}
 		return personas;
 	}
