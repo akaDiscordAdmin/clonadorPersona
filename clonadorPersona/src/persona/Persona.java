@@ -20,7 +20,6 @@ public class Persona {
 		this.altura = altura;
 		this.edad = edad;
 	}
-	
 	/**
 	 * Metodo que devuelve el nombre de la persona deseada
 	 * @return el nombre de la persona creada

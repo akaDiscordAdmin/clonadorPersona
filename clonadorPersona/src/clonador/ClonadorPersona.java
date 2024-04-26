@@ -1,10 +1,11 @@
 package clonador;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import generador.*;
 
 import persona.Persona;
+import restricciones.ValidadorPersona;
 
 public class ClonadorPersona {
 	
@@ -24,17 +25,18 @@ public class ClonadorPersona {
 	 * @return 
 	 */
 	public List<Persona> generarClones(String nombre) {
-		List<Persona> personas = new ArrayList<Persona>();
+		List<Persona> personas = new LinkedList<Persona>();
 		
 		for(int i=0; i<10; i++) {
-			altura a = new altura();
-			int altura = a.generarAltura();
-			edad b = new edad();
-			int edad = b.generarEdad();
-			peso c = new peso();
-			int peso = c.generarPeso();
+			Persona p = FactoryPersona.getPersona(nombre);
 			
-			personas.add(new Persona (nombre, peso, altura, edad));
+			boolean personaValida = ValidadorPersona.isValid(p);
+			
+			if(personaValida) {
+				personas.add(0, p);
+			}
+			
+			personas.add(0, p);
 		}
 		return personas;
 	}
